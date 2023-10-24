@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <title>Booking Appointment App</title>
+    <style>
+      #main {
+        border: 5px solid green;
+        border-radius: 10px;
+        font-weight: 500;
+        margin: 50px auto;
+        padding: 25px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container" id="main">
+      <h2>BOOKING APPOINTMENT APP</h2>
+      <br /><br />
+      <form action="/" method="post" id="userForm">
+        <div class="container">
+          <label for="name">User Name</label><br>
+          <input type="text" name="name" id="name" /><br>
+          <label for="phonenumber">Phone Number</label><br>
+          <input type="text" name="phonenumber" id="phonenumber" /><br>
+          <label for="email">Email</label><br>
+          <input type="text" name="email" id="email" /><br><br>
+          <button type="submit" id="submit">Submit</button>
+        </div>
+      </form>
+      
+      <br /><br />
+      <div>
+        <ul id="display-items">
+          <% for (const userForm of user) { %>
+          <li>
+            <%= userForm.name %> - <%= userForm.phonenumber %> - <%= userForm.email%>
+            <form action="/<%= userForm.id %>" method="POST">
+              <button type="submit">DELETE</button>
+            </form>
+            
+            <form action="/<%= userForm.id %>" method="GET" style="margin-top: 10px;" >
+              <button type="submit" class="edit-button">Edit</button>
+            </form>
+
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
